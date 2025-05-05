@@ -8,12 +8,26 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
 
+  runtimeConfig: {
+    supabaseServiceKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    public: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseKey: process.env.SUPABASE_KEY
+    }
+  },
+  
+
   modules: [
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/ui'
-  ]
+    '@nuxt/ui',
+    '@nuxtjs/supabase'
+  ],
+
+  supabase: {
+    redirect: false,
+  }
 })

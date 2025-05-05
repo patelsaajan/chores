@@ -3,6 +3,8 @@
 @import "@nuxt/ui";
 
 @theme {
-    --color-primary: var(--ui-primary);
+    --color-primary  : var(--ui-primary);
     --color-secondary: var(--ui-secondary);
+    --color-neutral  : #0F1A2D;
 }
+
