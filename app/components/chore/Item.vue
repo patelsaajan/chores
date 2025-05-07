@@ -41,11 +41,12 @@ type ChoreItem = z.infer<typeof choreItemSchema>
 
 const props = defineProps<{
     choreLabel: string
+    storyPoints: number
 }>()
 
 const itemValues = reactive<ChoreItem>({
   name: props.choreLabel,
-  storyPoints: 0
+  storyPoints: props.storyPoints
 })
 
 </script>

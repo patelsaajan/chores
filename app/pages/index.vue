@@ -1,15 +1,13 @@
 <template>
     <div class="container mx-auto">
-        <div class="flex flex-col gap-4 items-center">
+        <div class="flex flex-col gap-4 items-center w-48 m-auto">
             <ChoreItem 
-                chore-label="Wash dishes"
-            />
-            <ChoreItem 
-                chore-label="Laundry"
-            />
-            <ChoreItem 
-                chore-label="Bin"
-            />
+                v-for="chore in chores"
+                :key="chore.id"
+                :chore-label="chore.chore_name"
+                :story-points="chore.story_points"
+            /> 
+            <ChoreAdd />
         </div>
     </div>
 </template>
@@ -18,9 +16,14 @@
 
 const supabase = useSupabaseClient()
 
-const { data } = await supabase.from('chores').select('*')
+interface Chore {
+    id: number
+    chore_name: string
+    story_points: number
+}
 
-console.log('data::', data)
+const { data } = await supabase.from('chores').select('*')
+const chores = ref<Chore[]>(data || [])
 
 </script>
 
